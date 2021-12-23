@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:jake_git/home_screen.dart';
+import 'package:get/get.dart';
+import 'package:jake_git/bindings/bindings.dart';
+import 'screens/main_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -8,12 +10,15 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
+    return GetMaterialApp(
+      smartManagement: SmartManagement.full,
+      initialBinding: JakeBindings(),
+      title: 'Jake_Git',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: HomeScreen(),
+      home: MainScreen(),
     );
   }
 }
