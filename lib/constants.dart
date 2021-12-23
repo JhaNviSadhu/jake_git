@@ -9,6 +9,7 @@ const titleTextStyle = TextStyle(
   fontWeight: FontWeight.w700,
   color: Colors.black,
 );
+
 const subTitleTextStyle = TextStyle(
   fontSize: 18,
   fontWeight: FontWeight.w500,

@@ -36,6 +36,7 @@ class APIProvider {
     }));
   }
 
+  //get api call
   Future<Response<dynamic>> getAPICall(String url) async {
     try {
       print(_dio?.options.headers);
@@ -48,43 +49,6 @@ class APIProvider {
       }
       throw Exception(ex.message);
     }
-  }
-
-  Future<Response<dynamic>> getAPICallWithQueryParam(
-      String url, dynamic data) async {
-    final Response<dynamic> response =
-        await _dio!.get(url, queryParameters: data as Map<String, dynamic>);
-    throwIfNoSuccess(response);
-    return response;
-  }
-
-  Future<Response<dynamic>> postAPICall(String url, dynamic data) async {
-    final Response<dynamic> response = await _dio!.post(url, data: data);
-    throwIfNoSuccess(response);
-    return response;
-  }
-
-  Future<Response<dynamic>> formDataPostAPICall(
-      String url, dynamic data) async {
-    final Response<dynamic> response = await _dio!.post(url,
-        data: data,
-        options: Options(
-          contentType: 'multipart/form-data',
-        ));
-    throwIfNoSuccess(response);
-    return response;
-  }
-
-  Future<Response<dynamic>> deleteAPICall(String url) async {
-    final Response<dynamic> response = await _dio!.delete(url);
-    throwIfNoSuccess(response);
-    return response;
-  }
-
-  Future<Response<dynamic>> putAPICall(String url, dynamic data) async {
-    final Response<dynamic> response = await _dio!.put(url, data: data);
-    throwIfNoSuccess(response);
-    return response;
   }
 
   void throwIfNoSuccess(Response<dynamic> response) {
