@@ -78,34 +78,61 @@ class _MobileViewState extends State<MobileView> {
       subtitle: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Padding(
-            padding: const EdgeInsets.only(bottom: 8),
-            child: Text(
-              _repoController.arrRepoLists[index].description ?? "",
-              overflow: TextOverflow.ellipsis,
-              maxLines: 2,
-              style: subTitleTextStyle,
-            ),
-          ),
+          (_repoController.arrRepoLists[index].description != null)
+              ? Padding(
+                  padding: const EdgeInsets.only(bottom: 8),
+                  child: Text(
+                    _repoController.arrRepoLists[index].description ?? "",
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 2,
+                    style: subTitleTextStyle,
+                  ),
+                )
+              : SizedBox(),
           Row(
             children: [
-              Icon(Icons.code_rounded),
-              SizedBox(width: 5),
-              Text(
-                _repoController.arrRepoLists[index].language ?? "",
-              ),
-              SizedBox(width: 10),
-              Icon(Icons.bug_report),
-              SizedBox(width: 5),
-              Text("${_repoController.arrRepoLists[index].openIssues ?? 0}"),
-              SizedBox(width: 10),
-              Icon(Icons.face),
-              SizedBox(width: 5),
-              Text("${_repoController.arrRepoLists[index].watchers ?? 0}"),
+              (_repoController.arrRepoLists[index].language != null)
+                  ? Row(
+                      children: [
+                        buildRow(
+                          _repoController.arrRepoLists[index].language ?? "",
+                          Icons.code_rounded,
+                        ),
+                        SizedBox(width: 10),
+                      ],
+                    )
+                  : SizedBox(),
+              (_repoController.arrRepoLists[index].openIssues != 0)
+                  ? Row(
+                      children: [
+                        buildRow(
+                          "${_repoController.arrRepoLists[index].openIssues ?? 0}",
+                          Icons.bug_report,
+                        ),
+                        SizedBox(width: 10),
+                      ],
+                    )
+                  : SizedBox(),
+              (_repoController.arrRepoLists[index].watchers != 0)
+                  ? buildRow(
+                      "${_repoController.arrRepoLists[index].watchers ?? 0}",
+                      Icons.face,
+                    )
+                  : SizedBox(),
             ],
           ),
         ],
       ),
+    );
+  }
+
+  Row buildRow(String? data, IconData? icon) {
+    return Row(
+      children: [
+        Icon(icon),
+        SizedBox(width: 5),
+        Text(data ?? ''),
+      ],
     );
   }
 }

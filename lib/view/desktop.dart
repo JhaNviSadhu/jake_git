@@ -99,24 +99,39 @@ class _DesktopViewState extends State<DesktopView> {
           ),
         ),
         SizedBox(height: 8),
-        SizedBox(
-          width: (Responsive.isDesktop(context)) ? width / 5.5 : width / 3,
-          child: Text(
-            _repoController.arrRepoLists[index].description ?? '',
-            overflow: TextOverflow.ellipsis,
-            style: subTitleTextStyle,
-            maxLines: (Responsive.isDesktop(context)) ? 3 : 2,
-          ),
-        ),
-        SizedBox(height: 8),
-        buildRow(_repoController.arrRepoLists[index].language ?? '',
-            Icons.code_rounded),
-        buildRow(
-          "${_repoController.arrRepoLists[index].openIssues ?? 0}",
-          Icons.bug_report,
-        ),
-        buildRow(
-            "${_repoController.arrRepoLists[index].watchers ?? 0}", Icons.face),
+        (_repoController.arrRepoLists[index].description != null)
+            ? SizedBox(
+                width:
+                    (Responsive.isDesktop(context)) ? width / 5.5 : width / 3,
+                child: Column(
+                  children: [
+                    Text(
+                      _repoController.arrRepoLists[index].description ?? '',
+                      overflow: TextOverflow.ellipsis,
+                      style: subTitleTextStyle,
+                      maxLines: (Responsive.isDesktop(context)) ? 3 : 2,
+                    ),
+                    SizedBox(height: 8),
+                  ],
+                ),
+              )
+            : SizedBox(),
+        (_repoController.arrRepoLists[index].language != null)
+            ? buildRow(_repoController.arrRepoLists[index].language ?? '',
+                Icons.code_rounded)
+            : SizedBox(),
+        (_repoController.arrRepoLists[index].openIssues != 0)
+            ? buildRow(
+                "${_repoController.arrRepoLists[index].openIssues ?? 0}",
+                Icons.bug_report,
+              )
+            : SizedBox(),
+        (_repoController.arrRepoLists[index].watchers != 0)
+            ? buildRow(
+                "${_repoController.arrRepoLists[index].watchers ?? 0}",
+                Icons.face,
+              )
+            : SizedBox(),
       ],
     );
   }
