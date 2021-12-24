@@ -2,11 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:jake_git/constants.dart';
 import 'package:jake_git/controllers/repo_controller.dart';
-import 'package:jake_git/provider/db_provider.dart';
 import 'package:jake_git/responsive.dart';
-import 'package:jake_git/screens/repo.dart';
 import 'package:jake_git/view/desktop.dart';
 import 'package:jake_git/view/mobile.dart';
+import 'dart:io' show Platform;
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
@@ -30,17 +29,6 @@ class _MainScreenState extends State<MainScreen> {
         centerTitle: false,
         backgroundColor: kPrimaryColor,
         title: Text("Jake's Git"),
-        // actions: <Widget>[
-        //   Container(
-        //     padding: EdgeInsets.only(right: 10.0),
-        //     child: IconButton(
-        //       icon: Icon(Icons.settings_input_antenna),
-        //       onPressed: () async {
-        //         await _loadFromApi();
-        //       },
-        //     ),
-        //   ),
-        // ],
       ),
       //for identify which view it is
       body: Responsive(
