@@ -41,6 +41,7 @@ class _MobileViewState extends State<MobileView> {
     return Scaffold(
       body: Obx(
         () => ListView.separated(
+          physics: BouncingScrollPhysics(),
           controller: scrollcontroller,
           itemCount: _repoController.arrRepoLists.length + 1,
           itemBuilder: (context, index) {

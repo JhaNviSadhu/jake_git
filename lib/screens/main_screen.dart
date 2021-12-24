@@ -26,7 +26,7 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        centerTitle: false,
+        centerTitle: (Platform.isIOS) ? true : false,
         backgroundColor: kPrimaryColor,
         title: Text("Jake's Git"),
       ),

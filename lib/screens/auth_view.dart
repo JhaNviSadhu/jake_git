@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:jake_git/constants.dart';
+import 'dart:io' show Platform;
+import '../controllers/auth_controller.dart';
 
-import '../controllers/home_controller.dart';
-
-class HomeView extends GetView<HomeController> {
+// check biometric authentication is avaliable
+class AuthView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Local Authentication'),
-        centerTitle: true,
+        title: Text('Login'),
+        centerTitle: (Platform.isIOS) ? true : false,
+        backgroundColor: kPrimaryColor,
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -19,7 +22,7 @@ class HomeView extends GetView<HomeController> {
             padding: EdgeInsets.all(16),
             color: Colors.grey[200],
             child: Text(
-              'Biometric',
+              'Avaliable Biometric',
               style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
             ),
           ),
@@ -83,7 +86,9 @@ class HomeView extends GetView<HomeController> {
           Column(
             children: [
               ElevatedButton(
-                child: Text('Authenticate'),
+                style: ElevatedButton.styleFrom(primary: kPrimaryColor),
+                child: Text('Login'),
+                //user authenticate
                 onPressed: () => controller.authenticateUser(),
               ),
             ],

@@ -44,6 +44,7 @@ class _DesktopViewState extends State<DesktopView> {
     return Scaffold(
       body: Obx(
         () => GridView.builder(
+          physics: BouncingScrollPhysics(),
           controller: gridScrollController,
           itemCount: _repoController.arrRepoLists.length + 1,
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(

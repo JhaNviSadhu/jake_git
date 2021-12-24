@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:jake_git/bindings/bindings.dart';
-import 'package:jake_git/screens/home_view.dart';
-import 'screens/main_screen.dart';
+import 'package:jake_git/screens/auth_view.dart';
 
 void main() {
   runApp(MyApp());
@@ -19,6 +18,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: HomeView());
+        //LOGIN SCREEN
+        home: AuthView());
   }
 }

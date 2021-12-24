@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:jake_git/screens/main_screen.dart';
 import 'package:local_auth/auth_strings.dart';
 import 'package:local_auth/local_auth.dart';
 
@@ -65,6 +66,8 @@ class HomeController extends GetxController {
             title: "Success",
             message: "You are authenticated",
             backgroundColor: Colors.green);
+
+        Get.offAll(MainScreen());
       } else {
         showSnackBar(
             title: "Error",

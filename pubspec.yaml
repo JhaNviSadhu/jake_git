@@ -36,24 +36,15 @@ dependencies:
   #https://pub.dev/packages/get
   get: ^4.6.1
 
-  #for State management
-  #https://pub.dev/packages/sqflite
-  sqflite: ^2.0.1
-
-  #https://pub.dev/packages/path_provider
-  path_provider: ^2.0.8
-
   #for biometric authentication
   #https://pub.dev/packages/local_auth
   local_auth: ^1.1.9
   
-  #https://pub.dev/packages/equatable
-  equatable: ^2.0.3
-
-
 
 dev_dependencies:
   flutter_test:
+    sdk: flutter
+  integration_test:
     sdk: flutter
 
 # For information on the generic Dart part of this file, see the
