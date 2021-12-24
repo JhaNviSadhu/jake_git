@@ -55,7 +55,9 @@ class _DesktopViewState extends State<DesktopView> {
           itemBuilder: (context, index) {
             if (index == _repoController.arrRepoLists.length) {
               return Center(
-                child: CircularProgressIndicator(),
+                child: CircularProgressIndicator(
+                  color: kPrimaryColor,
+                ),
               );
             }
             return repoContainer(context, width, _repoController, index);

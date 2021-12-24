@@ -47,7 +47,9 @@ class _MobileViewState extends State<MobileView> {
           itemBuilder: (context, index) {
             if (index == _repoController.arrRepoLists.length) {
               return Center(
-                child: CircularProgressIndicator(),
+                child: CircularProgressIndicator(
+                  color: kPrimaryColor,
+                ),
               );
             }
             return repoListTile(index);

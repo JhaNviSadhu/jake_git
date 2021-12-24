@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:jake_git/constants.dart';
 import 'package:jake_git/controllers/repo_controller.dart';
 import 'package:jake_git/responsive.dart';
+import 'package:jake_git/screens/auth_view.dart';
 import 'package:jake_git/view/desktop.dart';
 import 'package:jake_git/view/mobile.dart';
 import 'dart:io' show Platform;
@@ -29,6 +30,15 @@ class _MainScreenState extends State<MainScreen> {
         centerTitle: (Platform.isIOS) ? true : false,
         backgroundColor: kPrimaryColor,
         title: Text("Jake's Git"),
+        actions: [
+          Responsive.isDesktop(context)
+              ? SizedBox()
+              : IconButton(
+                  onPressed: () {
+                    Get.offAll(AuthView());
+                  },
+                  icon: Icon(Icons.logout))
+        ],
       ),
       //for identify which view it is
       body: Responsive(
@@ -41,20 +51,4 @@ class _MainScreenState extends State<MainScreen> {
       ),
     );
   }
-
-  // _loadFromApi() async {
-  //   setState(() {
-  //     isLoading = true;
-  //   });
-
-  //   var apiProvider = RepoApiProvider();
-  //   await apiProvider.getRepoList();
-
-  //   // wait for 2 seconds to simulate loading of data
-  //   await Future.delayed(const Duration(seconds: 2));
-
-  //   setState(() {
-  //     isLoading = false;
-  //   });
-  // }
 }

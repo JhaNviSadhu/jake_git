@@ -1,7 +1,12 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:jake_git/bindings/bindings.dart';
+
 import 'package:jake_git/screens/auth_view.dart';
+import 'package:jake_git/screens/main_screen.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 
 void main() {
   runApp(MyApp());

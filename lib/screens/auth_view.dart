@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:jake_git/constants.dart';
+import 'package:jake_git/screens/main_screen.dart';
 import 'dart:io' show Platform;
 import '../controllers/auth_controller.dart';
 
@@ -16,70 +17,24 @@ class AuthView extends GetView<HomeController> {
         backgroundColor: kPrimaryColor,
       ),
       body: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Container(
             padding: EdgeInsets.all(16),
-            color: Colors.grey[200],
             child: Text(
               'Avaliable Biometric',
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
             ),
           ),
           SizedBox(
             height: 10,
           ),
-          Container(
-              margin: EdgeInsets.only(left: 16, right: 16),
-              child: Row(
-                children: [
-                  Obx(
-                    () => controller.hasFingerPrintLock.value
-                        ? Icon(
-                            Icons.check,
-                            color: Colors.green,
-                          )
-                        : Icon(
-                            Icons.clear,
-                            color: Colors.red,
-                          ),
-                  ),
-                  SizedBox(
-                    width: 8,
-                  ),
-                  Text(
-                    'Finger Print Authentication',
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                  )
-                ],
-              )),
+          biometricAuthenticationAva('Finger Print Authentication'),
           SizedBox(
             height: 10,
           ),
-          Container(
-              margin: EdgeInsets.only(left: 16, right: 16),
-              child: Row(
-                children: [
-                  Obx(
-                    () => controller.hasFaceLock.value
-                        ? Icon(
-                            Icons.check,
-                            color: Colors.green,
-                          )
-                        : Icon(
-                            Icons.clear,
-                            color: Colors.red,
-                          ),
-                  ),
-                  SizedBox(
-                    width: 8,
-                  ),
-                  Text(
-                    'Face Authentication',
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                  )
-                ],
-              )),
+          biometricAuthenticationAva('Face Authentication'),
           SizedBox(
             height: 16,
           ),
@@ -91,10 +46,53 @@ class AuthView extends GetView<HomeController> {
                 //user authenticate
                 onPressed: () => controller.authenticateUser(),
               ),
+              TextButton(
+                onPressed: () {
+                  Get.offAll(MainScreen());
+                },
+                child: Text(
+                  "Skip",
+                  style: TextStyle(
+                    color: kPrimaryColor,
+                    decoration: TextDecoration.underline,
+                  ),
+                ),
+              ),
             ],
-          )
+          ),
         ],
       ),
     );
+  }
+
+  Container biometricAuthenticationAva(String text) {
+    return Container(
+        margin: EdgeInsets.only(left: 16, right: 16),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Obx(
+              () => controller.hasFingerPrintLock.value
+                  ? Icon(
+                      Icons.check,
+                      color: Colors.green,
+                    )
+                  : Icon(
+                      Icons.clear,
+                      color: Colors.red,
+                    ),
+            ),
+            SizedBox(
+              width: 8,
+            ),
+            Text(
+              text,
+              style: TextStyle(
+                fontSize: 16,
+              ),
+            ),
+            Spacer(),
+          ],
+        ));
   }
 }
